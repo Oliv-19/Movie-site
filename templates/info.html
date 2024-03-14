@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{json_data.titleText.text}}</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: aliceblue;
+    }
+    
+    nav {
+        display: flex;
+        flex-direction: row;
+        background-color: #121225;
+        box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%,0.25);
+        padding: 10px 0;
+        width: 100%;
+        
+    }
+
+    footer{
+        background-color: #121225;
+        box-shadow: 0 -0.75rem 3rem 1.5rem hsla(0, 0%, 0%,0.25);
+        padding: 40px 0;
+        width: 100%;
+        margin-top: 5%;
+    }
+    
+    .marvel_icon {
+        position: relative;
+        left: 15%;
+    } 
+    .search_bar{
+        position: relative;
+        left: 50%;
+        /* width: 20%; */
+        background-color: #84848f6b;
+        box-sizing: border-box;
+        padding: 12px 15px 11px 35px;
+        width: 100%;
+        /* background-color: #E1E1E1; */
+        border:none;
+        color: #272727;
+        font-weight: bold;
+        font-size: 15px;
+        outline: none;
+        border-radius: 5px 0px 0px 5px;
+    }
+    
+    .input_group{
+        position: relative;
+        right: -140%;
+        display: flex;
+        flex-direction: row;
+        top: 15%;
+        /* justify-content: center; */
+        /* margin-top: 30px; */
+        }
+        .btn{
+            position: relative;
+            left: 120%;
+            width: 37px;
+            height: 40px;
+            background-color: #84848f6b;
+            border: none;
+            border-radius: 0px 5px 5px 0px;
+        }
+        .input-icon {
+            color: #b9b9b9;
+            margin-top: 20px;
+            width: 25px;
+            height: 25px;
+            transform: translateY(-50%);
+        }
+    
+        .input-wrapper {
+            position: relative;
+            width: 80%;
+            left: 80%;
+        }
+        /* .input {
+            box-sizing: border-box;
+            padding: 12px 15px 11px 35px;
+            width: 100%;
+            background-color: #E1E1E1;
+            border:none;
+            color: #272727;
+            font-weight: bold;
+            font-size: 15px;
+            outline: none;
+            border-radius: 5px 0px 0px 5px;
+        } */
+        .input::placeholder{
+            color: #272727;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .input:focus, .btn:focus{
+            outline: 1px solid #a0a09c;
+        }
+    
+        .input:-webkit-autofill,
+        .input:-webkit-autofill:hover, 
+        .input:-webkit-autofill:focus {
+            -webkit-text-fill-color: #272727;
+            -webkit-box-shadow: 0 0 0px 40rem rgb(226, 231, 238)  inset;
+        }
+    
+    body{
+        background-image: url({{json_data.primaryImage.url}});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #222242;
+        
+    }
+    .back{
+        background-color: #22224250;
+    }
+    .title_cast{
+        margin: 15% 10% 0 5%;
+        height: 300px;
+    }
+    .title{
+        font-size: 40px;
+        margin-bottom: 5%;
+    }
+    .cast{
+        margin-right: 25%;
+    }
+    .plot{
+        margin: 0% 10% 0 10%;
+        text-align: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="back">
+        <nav>
+            <div class="marvel_icon">
+                <a href="/">
+                    <span class="icon--svg icon--svg mvl-animated-logo" aria-hidden="true">
+                        <svg width="130" height="52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect fill="#EC1D24" width="100%" height="100%"></rect>
+                            <path fill="#FEFEFE" d="M126.222 40.059v7.906H111.58V4h7.885v36.059h6.757zm-62.564-14.5c-.61.294-1.248.44-1.87.442v-14.14h.04c.622-.005 5.264.184 5.264 6.993 0 3.559-1.58 5.804-3.434 6.705zM40.55 34.24l2.183-18.799 2.265 18.799H40.55zm69.655-22.215V4.007H87.879l-3.675 26.779-3.63-26.78h-8.052l.901 7.15c-.928-1.832-4.224-7.15-11.48-7.15-.047-.002-8.06 0-8.06 0l-.031 39.032-5.868-39.031-10.545-.005-6.072 40.44.002-40.435H21.278L17.64 26.724 14.096 4.006H4v43.966h7.95V26.78l3.618 21.192h4.226l3.565-21.192v21.192h15.327l.928-6.762h6.17l.927 6.762 15.047.008h.01v-.008h.02V33.702l1.845-.27 3.817 14.55h7.784l-.002-.01h.022l-5.011-17.048c2.538-1.88 5.406-6.644 4.643-11.203v-.002C74.894 19.777 79.615 48 79.615 48l9.256-.027 6.327-39.85v39.85h15.007v-7.908h-7.124v-10.08h7.124v-8.03h-7.124v-9.931h7.124z">
+                            </path>
+                            <path fill="#EC1D24" d="M0 0h30v52H0z">
+                            </path>
+                            <path fill="#FEFEFE" d="M31.5 48V4H21.291l-3.64 22.735L14.102 4H4v44h8V26.792L15.577 48h4.229l3.568-21.208V48z">
+                            </path>
+                        </svg>
+                    </span>
+                <!-- <h1>M</h1> -->
+                </a>
+            </div>
+            
+            <form action="" method="post" class="col-md-6 col-md-offset-3">
+                {% csrf_token %}
+                    <div class="input_group">
+                        <div class="input-wrapper">
+                            <input type="text" class="search_bar" name="search_bar" placeholder="Search" required>
+
+                        </div>
+
+                        <button class="btn btn-default" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+
+                    </div>
+            <form>
+        </nav>
+
+        <section>
+            <div class="title_cast">
+                <div class="title">
+                    <h1>{{json_data.titleText.text}}</h1>
+                </div>
+                <div class="cast">
+                    <h4>{{json_data.primaryImage.caption.plainText}}</h4>
+                </div>
+            </div>
+        
+            <div class="plot">
+                <h1>~{{json_data.plot.plotText.plainText}}~</h1>
+            </div>
+        </section>
+
+        
+    <footer></footer>
+
+    </div>
+
+
+</body>
+
+</html>

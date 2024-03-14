@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Movies</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color: #121225;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%,0.25);
+    padding: 10px 0;
+    width: 100%;
+    
+}
+
+.marvel_icon {
+    position: relative;
+    left: 15%;
+} 
+.search_bar{
+    position: relative;
+    left: 50%;
+    /* width: 20%; */
+    background-color: #84848f6b;
+    box-sizing: border-box;
+    padding: 12px 15px 11px 35px;
+    width: 100%;
+    /* background-color: #E1E1E1; */
+    border:none;
+    color: #cfcfcf;
+    font-weight: bold;
+    font-size: 15px;
+    outline: none;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.input_group{
+    position: relative;
+    right: -140%;
+    display: flex;
+    flex-direction: row;
+    top: 15%;
+    /* justify-content: center; */
+    /* margin-top: 30px; */
+    }
+    .btn{
+        position: relative;
+        left: 120%;
+        width: 37px;
+        height: 40px;
+        background-color: #84848f6b;
+        border: none;
+        border-radius: 0px 5px 5px 0px;
+    }
+    .input-icon {
+        color: #b9b9b9;
+        margin-top: 20px;
+        width: 25px;
+        height: 25px;
+        transform: translateY(-50%);
+    }
+
+    .input-wrapper {
+        position: relative;
+        width: 80%;
+        left: 80%;
+    }
+    /* .input {
+        box-sizing: border-box;
+        padding: 12px 15px 11px 35px;
+        width: 100%;
+        background-color: #E1E1E1;
+        border:none;
+        color: #272727;
+        font-weight: bold;
+        font-size: 15px;
+        outline: none;
+        border-radius: 5px 0px 0px 5px;
+    } */
+    .input::placeholder{
+        color: #272727;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .input:focus, .btn:focus{
+        outline: 1px solid #a0a09c;
+    }
+
+    .input:-webkit-autofill,
+    .input:-webkit-autofill:hover, 
+    .input:-webkit-autofill:focus {
+        -webkit-text-fill-color: #272727;
+        -webkit-box-shadow: 0 0 0px 40rem rgb(226, 231, 238)  inset;
+    }
+
+body{
+    background-color: #222242;
+}
+.every_movie{
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.poster {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    top: 4%;
+    left: 7%;
+}
+.posters {
+    display: grid;
+    grid-template: repeat(7, 1fr)/ repeat(5, 1fr);
+    margin: 0 5%;
+    gap: 10px;
+    /* position: relative;
+    left: 5%; */
+}
+.poster_container {
+    width: 230px;
+    height: 350px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}    
+a{
+    text-decoration: none;
+    color: #121225;
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 10%;
+    top: 4%;
+    justify-content: space-around;
+    padding: 3%;
+    font-weight: bolder;
+}
+.svg{
+    position: relative;
+    left: 17%;
+    top: -20%;
+}
+/* .year{
+    position: relative;
+    top: 80%; 
+    left: 10%; 
+    width: 20px;
+    font-weight: bolder;
+}
+.svg{
+    position: relative;
+    top: 80%; 
+    left: 50%; 
+}
+.rating{
+    position: relative;
+    top: 80%; 
+    left: 77%; 
+    width: 20px;
+    font-weight: bolder;
+} */
+/* .recent_movies{
+    width: 100vw;
+    height: 80vh;
+    border: 1px solid red;
+    
+}
+.random_poster{
+    position: absolute;
+    width: 700px;
+    height: 450px;
+    left: 22.5%;
+    top: 10%;
+
+} */
+.recent_movies{
+    padding: 2rem;
+
+}
+.slider_wraper{
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+
+}
+.slider{
+    display: flex;
+    aspect-ratio: 16/9; 
+    
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%,0.25);
+    border-radius: 0.5rem;
+}
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit:fill;
+    
+    
+}
+
+.slider_nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: -1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    
+}
+.slider_nav a{
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+}
+.slider_nav a:hover{
+    opacity: 1;
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <div class="marvel_icon">
+            <span class="icon--svg icon--svg mvl-animated-logo" aria-hidden="true">
+                <svg width="130" height="52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect fill="#EC1D24" width="100%" height="100%"></rect>
+                    <path fill="#FEFEFE" d="M126.222 40.059v7.906H111.58V4h7.885v36.059h6.757zm-62.564-14.5c-.61.294-1.248.44-1.87.442v-14.14h.04c.622-.005 5.264.184 5.264 6.993 0 3.559-1.58 5.804-3.434 6.705zM40.55 34.24l2.183-18.799 2.265 18.799H40.55zm69.655-22.215V4.007H87.879l-3.675 26.779-3.63-26.78h-8.052l.901 7.15c-.928-1.832-4.224-7.15-11.48-7.15-.047-.002-8.06 0-8.06 0l-.031 39.032-5.868-39.031-10.545-.005-6.072 40.44.002-40.435H21.278L17.64 26.724 14.096 4.006H4v43.966h7.95V26.78l3.618 21.192h4.226l3.565-21.192v21.192h15.327l.928-6.762h6.17l.927 6.762 15.047.008h.01v-.008h.02V33.702l1.845-.27 3.817 14.55h7.784l-.002-.01h.022l-5.011-17.048c2.538-1.88 5.406-6.644 4.643-11.203v-.002C74.894 19.777 79.615 48 79.615 48l9.256-.027 6.327-39.85v39.85h15.007v-7.908h-7.124v-10.08h7.124v-8.03h-7.124v-9.931h7.124z">
+                    </path>
+                    <path fill="#EC1D24" d="M0 0h30v52H0z">
+                    </path>
+                    <path fill="#FEFEFE" d="M31.5 48V4H21.291l-3.64 22.735L14.102 4H4v44h8V26.792L15.577 48h4.229l3.568-21.208V48z">
+                    </path>
+                </svg>
+            </span>
+            <!-- <h1>M</h1> -->
+        </div>
+        
+        <form action="search" method="get" class="col-md-6 col-md-offset-3">
+            {% csrf_token %}
+                <div class="input_group">
+                    <div class="input-wrapper">
+                        <input type="text" class="search_bar" name="search_bar" placeholder="Search" required>
+
+                    </div>
+
+                    <button class="btn btn-default" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                </div>
+        <form>
+    </nav>
+    <div class="recent_movies">
+        <div class="slider_wraper">
+            <div class="slider">
+                    
+                        {% for i, e in idDict.items%}
+                            <img id="{{i}}" class="random_poster" src='{{e}}' alt="img">
+                        {%endfor%}
+                
+            </div>
+            <div class="slider_nav">
+                <a href="#slide_1"></a>
+                <a href="#slide_2"></a>
+                <a href="#slide_3"></a>
+                <a href="#slide_4"></a>
+                <a href="#slide_5"></a>
+            </div>
+        </div>
+    </div>
+    <div class="every_movie">
+         <div class="posters">
+        {% for i in data %}
+        <div class="poster_container">
+            <a href="/movie/{{i.id}}">
+                <img class="poster" src='{{i.img}}' alt="img">
+                <div class="text">
+                    <p class="year">{{i.year}}</p>
+                    <?xml version="1.0" ?>
+                    <svg class="svg" height="25px" version="1.1" viewBox="0 0 58 58" width="25px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title/><desc/><defs/>
+                        <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                            <g id="019---Star" transform="translate(-1.000000, 0.000000)">
+                                <path d="M31.7569,1.14435 L39.2006,16.94809 C39.4742047,17.5450605 40.0274966,17.9662669 40.67576,18.07109 L57.32037,20.60534 C58.0728338,20.7512497 58.6840769,21.2991656 58.9110909,22.0312558 C59.1381048,22.7633461 58.9440977,23.560962 58.4062,24.107 L46.36205,36.40845 C45.8969861,36.8906851 45.6879532,37.5647752 45.79858,38.22553 L48.64182,55.59553 C48.7969313,56.3422303 48.5093863,57.1116407 47.9025754,57.5735945 C47.2957646,58.0355484 46.4775729,58.1079148 45.7991,57.75964 L30.9117,49.55864 C30.3445605,49.2442297 29.6554395,49.2442297 29.0883,49.55864 L14.2009,57.75964 C13.5224271,58.1079148 12.7042354,58.0355484 12.0974246,57.5735945 C11.4906137,57.1116407 11.2030687,56.3422303 11.35818,55.59553 L14.20142,38.22553 C14.3120468,37.5647752 14.1030139,36.8906851 13.63795,36.40845 L1.5938,24.107 C1.05593046,23.5609597 0.861941478,22.7633618 1.08895299,22.0312898 C1.31596449,21.2992177 1.92718692,20.7513115 2.67963,20.60539 L19.32424,18.0711 C19.9725034,17.9662769 20.5257953,17.5450705 20.7994,16.9481 L28.2431,1.14435 C28.5505421,0.448721422 29.2394609,-5.16717968e-06 30,-5.16717968e-06 C30.7605391,-5.16717968e-06 31.4494579,0.448721422 31.7569,1.14435 Z" fill="#F6AB27" id="Shape"/>
+                                <path d="M37.39,13.11 C32.5890747,15.6770414 28.15587,18.8791741 24.21,22.63 C20.0044812,26.6560517 16.436883,31.2993247 13.63,36.4 L1.59009,24.11 C1.05224467,23.5636351 0.858777828,22.7655877 1.086713,22.0335783 C1.31464817,21.3015689 1.92698179,20.7544339 2.67993,20.61 L19.32007,18.07 C19.967444,17.9624793 20.520694,17.5438036 20.80007,16.95 L28.24,1.14 C28.5507895,0.446404951 29.2399578,1.95277886e-05 30,1.95277886e-05 C30.7600422,1.95277886e-05 31.4492105,0.446404951 31.76,1.14 L37.39,13.11 Z" fill="#F4CD1E" id="Shape"/>
+                            </g>
+                        </g>
+                    </svg>
+
+                    <p class="rating">{{i.rating}}</p>
+                </div>
+            </a>
+        </div>
+        {%endfor%} 
+        
+            <!-- <?xml version="1.0" ?>
+                <svg height="58px" version="1.1" viewBox="0 0 58 58" width="58px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title/><desc/><defs/>
+                    <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                        <g id="019---Star" transform="translate(-1.000000, 0.000000)">
+                            <path d="M31.7569,1.14435 L39.2006,16.94809 C39.4742047,17.5450605 40.0274966,17.9662669 40.67576,18.07109 L57.32037,20.60534 C58.0728338,20.7512497 58.6840769,21.2991656 58.9110909,22.0312558 C59.1381048,22.7633461 58.9440977,23.560962 58.4062,24.107 L46.36205,36.40845 C45.8969861,36.8906851 45.6879532,37.5647752 45.79858,38.22553 L48.64182,55.59553 C48.7969313,56.3422303 48.5093863,57.1116407 47.9025754,57.5735945 C47.2957646,58.0355484 46.4775729,58.1079148 45.7991,57.75964 L30.9117,49.55864 C30.3445605,49.2442297 29.6554395,49.2442297 29.0883,49.55864 L14.2009,57.75964 C13.5224271,58.1079148 12.7042354,58.0355484 12.0974246,57.5735945 C11.4906137,57.1116407 11.2030687,56.3422303 11.35818,55.59553 L14.20142,38.22553 C14.3120468,37.5647752 14.1030139,36.8906851 13.63795,36.40845 L1.5938,24.107 C1.05593046,23.5609597 0.861941478,22.7633618 1.08895299,22.0312898 C1.31596449,21.2992177 1.92718692,20.7513115 2.67963,20.60539 L19.32424,18.0711 C19.9725034,17.9662769 20.5257953,17.5450705 20.7994,16.9481 L28.2431,1.14435 C28.5505421,0.448721422 29.2394609,-5.16717968e-06 30,-5.16717968e-06 C30.7605391,-5.16717968e-06 31.4494579,0.448721422 31.7569,1.14435 Z" fill="#F6AB27" id="Shape"/>
+                            <path d="M37.39,13.11 C32.5890747,15.6770414 28.15587,18.8791741 24.21,22.63 C20.0044812,26.6560517 16.436883,31.2993247 13.63,36.4 L1.59009,24.11 C1.05224467,23.5636351 0.858777828,22.7655877 1.086713,22.0335783 C1.31464817,21.3015689 1.92698179,20.7544339 2.67993,20.61 L19.32007,18.07 C19.967444,17.9624793 20.520694,17.5438036 20.80007,16.95 L28.24,1.14 C28.5507895,0.446404951 29.2399578,1.95277886e-05 30,1.95277886e-05 C30.7600422,1.95277886e-05 31.4492105,0.446404951 31.76,1.14 L37.39,13.11 Z" fill="#F4CD1E" id="Shape"/>
+                        </g>
+                    </g>
+                </svg> -->
+           
+        </div>
+    </div>
+
+    <script>
+      
+    </script>
+</body>
+</html>
